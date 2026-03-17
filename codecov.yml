@@ -65,6 +65,8 @@ flag_management:
     - name: go
       paths:
         - foreign/go/
+    - name: cpp
+        - foreign/cpp/
 
 comment:
   layout: "header, diff, flags, files"
