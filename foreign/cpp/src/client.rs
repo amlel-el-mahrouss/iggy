@@ -73,14 +73,17 @@ impl Client {
         })
     }
 
-    pub fn update_stream(&self, stream_id: ffi::Identifier, stream_name: String) -> Result<ffi::StreamDetails, String> {
+    pub fn update_stream(&self,
+			 stream_id: ffi::Identifier,
+			 stream_name: String)
+			 -> Result<ffi::StreamDetails, String> {
         let rust_stream_id = RustIdentifier::try_from(stream_id)
-            .map_err(|error| format!("Could not get stream: {error}"))?;
+            .map_err(|error| format!("Could not get the stream '{}': {error}", steam_name))?;
 
 	RUNTIME.block_on(async {
 	    self.inner.update_stream(stream_id, stream_name)
 	    	.await
-		.map_err(|error| format!("Could not update stream '{}': {error}", stream_name))
+		.map_err(|error| format!("Could not update the stream '{}': {error}", stream_name))
 	    Ok(())
 	})
     }

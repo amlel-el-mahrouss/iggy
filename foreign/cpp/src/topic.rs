@@ -33,4 +33,24 @@ impl From<RustTopic> for ffi::Topic {
             partitions_count: topic.partitions_count,
         }
     }
+
+    /// AMLALE(doc): This calls the FFI to capture the topic with the matching ID. It's thread-safe.
+    fn get_topic(&self,
+		 stream_id: &Identifier,
+		 topic_id: &Identifier) -> Result<Option<TopicDetails>, IggyError> {
+	RUNTIME.block_on(async {
+	    self.inner.get_topic(stream_id, topic_id)
+	    	.await
+		.map_err(|error| format!("Could not get the topic '{}': {error}", topic_id))
+	    Ok(())
+	})
+    }
+
+    fn update_topic(&self) {
+	Ok(())
+    }
+
+    fn delete_topic(&self) {
+	Ok(())
+    }
 }
