@@ -46,11 +46,11 @@ impl From<RustTopic> for ffi::Topic {
 	})
     }
 
-    fn update_topic(&self) {
+    fn update_topic(&self, stream_id: &Identifier) {
 	Ok(())
     }
 
-    fn delete_topic(&self) {
+    fn delete_topic(&self, stream_id: &Identifier) {
 	Ok(())
     }
 }
