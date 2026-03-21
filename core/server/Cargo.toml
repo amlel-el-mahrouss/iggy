@@ -17,7 +17,7 @@
 
 [package]
 name = "server"
-version = "0.7.2-edge.1"
+version = "0.7.3-edge.1"
 edition = "2024"
 license = "Apache-2.0"
 
@@ -100,7 +100,6 @@ tracing = { workspace = true }
 tracing-appender = { workspace = true }
 tracing-opentelemetry = { workspace = true }
 tracing-subscriber = { workspace = true }
-tungstenite = { workspace = true }
 ulid = { workspace = true }
 uuid = { workspace = true }
 
